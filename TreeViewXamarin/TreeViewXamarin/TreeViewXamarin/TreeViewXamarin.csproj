@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Icons\**" />
+    <EmbeddedResource Remove="Icons\**" />
+    <None Remove="Icons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTreeView" Version="19.1.0.55" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+  </ItemGroup>
+</Project>

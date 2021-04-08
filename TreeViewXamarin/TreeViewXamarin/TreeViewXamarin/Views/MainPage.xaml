@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TreeViewXamarin"
+             x:Class="TreeViewXamarin.MainPage"
+             xmlns:treeView="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+             xmlns:SfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:TreeViewEngine="clr-namespace:Syncfusion.TreeView.Engine;assembly=Syncfusion.SfTreeView.XForms">
+
+    <ContentPage.BindingContext>
+        <local:FileManagerViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <treeView:SfTreeView x:Name="treeView"
+                         ItemsSource="{Binding Folders}"
+                         ItemTemplateContextType="Node"
+                         AutoExpandMode="AllNodesExpanded"
+                         CheckedItems="{Binding CheckedItems}">
+        <treeView:SfTreeView.Behaviors>
+            <local:TreeViewBehavior/>
+        </treeView:SfTreeView.Behaviors>
+        <treeView:SfTreeView.HierarchyPropertyDescriptors>
+            <TreeViewEngine:HierarchyPropertyDescriptor TargetType="{x:Type local:Folder}" ChildPropertyName="Files"/>
+            <TreeViewEngine:HierarchyPropertyDescriptor TargetType="{x:Type local:File}" ChildPropertyName="SubFiles"/>
+        </treeView:SfTreeView.HierarchyPropertyDescriptors>
+
+        <treeView:SfTreeView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="5">
+                    <SfButtons:SfCheckBox x:Name="CheckBox" Text="{Binding Content.FileName}" IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
+                </Grid>
+            </DataTemplate>
+        </treeView:SfTreeView.ItemTemplate>
+    </treeView:SfTreeView>
+
+</ContentPage>
