@@ -1,2 +1,1 @@
-# update-checkbox-state-programmatically-treeview-xamarin
-How to update checkbox state programmatically in Xamarin.Forms TreeView (SfTreeView)
+**[View document in Syncfusion Xamarin Knowledge base](https://www.syncfusion.com/kb/12553/how-to-update-checkbox-state-programmatically-in-xamarin-forms-treeview-sftreeview)**
