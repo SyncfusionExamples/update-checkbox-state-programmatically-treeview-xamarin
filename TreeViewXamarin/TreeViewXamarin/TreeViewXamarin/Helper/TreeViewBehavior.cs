@@ -45,34 +45,44 @@ namespace TreeViewXamarin
             var checkedNodes = TreeView.GetCheckedNodes();
             foreach (var node in checkedNodes)
             {
-                //Update child nodes based on parent's checked state.
                 if (node.ParentNode == null && node.HasChildNodes)
                 {
-                    setChildChecked(node);
+                    //Update child nodes based on parent's checked state.
+                    SetChildChecked(node);
                 }
 
-                //Update parent node based on child's checked state.
-                else if (node.ParentNode != null)
+                else
                 {
-                    if (node.ParentNode.ChildNodes.All(x => x.IsChecked == true))
-                    {
-                        node.ParentNode.IsChecked = true;
-                    }
-                    else node.ParentNode.IsChecked = null;
+                    //Update parent node based on child's checked state.
+                    SetParentChecked(node);
                 }
-
             }
         }
 
-        private void setChildChecked(TreeViewNode node)
+        private void SetChildChecked(TreeViewNode node)
         {
             foreach (var child in node.ChildNodes)
             {
                 child.IsChecked = true;
                 if (child.HasChildNodes)
                 {
-                    setChildChecked(child);
+                    SetChildChecked(child);
                 }
+            }
+        }
+
+        private void SetParentChecked(TreeViewNode node)
+        {
+            if (node.ParentNode == null) return;
+
+            if (node.ParentNode.ChildNodes.All(x => x.IsChecked == true))
+                node.ParentNode.IsChecked = true;
+
+            else node.ParentNode.IsChecked = null;
+
+            if(node.ParentNode != null)
+            {
+                SetParentChecked(node.ParentNode);
             }
         }
         #endregion

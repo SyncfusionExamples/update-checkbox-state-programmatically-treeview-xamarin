@@ -111,8 +111,7 @@ namespace TreeViewXamarin
             checkedItems.Add(doc);
             checkedItems.Add(typeScript);
             checkedItems.Add(uiGuide);
-            checkedItems.Add(stone);
-            checkedItems.Add(pictures);
+            checkedItems.Add(img1);
             checkedItems.Add(song);
 
             return nodeImageInfo;
